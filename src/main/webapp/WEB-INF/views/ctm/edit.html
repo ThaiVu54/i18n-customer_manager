@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="#{edit.title}"></title>
+</head>
+<body>
+<h1 th:text="#{edit.heading}"></h1>
+Language: <a href="?lang=en">English</a> | <a href="?lang=vi">Vietnamese</a>
+<p>
+    <a href="/customers" th:text="#{list.heading}"></a>
+</p>
+<th:block th:if="${message}">
+    <p th:text="${message}"></p>
+</th:block>
+<form th:action="@{/customers/edit}" th:object="${customer}" method="post">
+    <input th:type="hidden" th:field="*{id}">
+    <table>
+        <tr>
+            <td th:text="#{edit.first_name}"></td>
+            <td><input type="text" th:field="*{firstName}"></td>
+        </tr>
+        <tr>
+            <td th:text="#{edit.last_name}"></td>
+            <td><input type="text" th:field="*{lastName}"></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><input type="submit" th:value="#{edit.submit}"></td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>
